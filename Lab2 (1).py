@@ -3,18 +3,13 @@ import pandas as pd
 
 
 def main():
-
     print(":: LABORATORIO 2 ::\n")
     data = pd.DataFrame(np.array([
-    ["q0", ["+","-"], "q0,q1"],
-    ["q0", ["0","1","2","3","4","5","6","7","8","9"], "q1,q4"], 
-    ["q0,q1", ["0","1","2","3","4","5","6","7","8","9"], "q1,q4"], 
-    ["q0,q1", ["+","-"], "q0,q1"], 
-    ["q1,q4", ["0","1","2","3","4","5","6","7","8","9"], "q1,q4"], 
-    ["q1,q4", ["."], "q2,q3,q5"], 
-    ["q2,q3,q5",["0","1","2","3","4","5","6","7","8","9"] ,"q3,q5" ],
-    ["q3,q5", ["0","1","2","3","4","5","6","7","8","9"], "q3,q5"]],
-    dtype=object),
+    ["q0", ["+","-"], "q0,q1"], ["q0", [str(i) for i in range(0, 9)], "q1,q4"], 
+    ["q0,q1", [str(i) for i in range(0, 9)], "q1,q4"], 
+    ["q0,q1", ["+","-"], "q0,q1"], ["q1,q4", [str(i) for i in range(0, 9)], "q1,q4"], 
+    ["q1,q4", ["."], "q2,q3,q5"], ["q2,q3,q5",[str(i) for i in range(0, 9)] ,"q3,q5" ],
+    ["q3,q5", [str(i) for i in range(0, 9)], "q3,q5"]],),
     columns=['state', 'symbol', 'δ(q, s)'])
 
     print("[!] Estado de aceptacion: " + str(accepted(getFinalState("q0","2022.3.3.3",data), ["q2,q3,q5","q3,q5"])) )
@@ -56,5 +51,5 @@ def accepted(q, s):
         print("[ERR] ")
 
 
-if __name__ == '_main_':
+if _name_ == '_main_':
     main()
